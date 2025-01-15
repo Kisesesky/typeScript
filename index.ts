@@ -607,3 +607,59 @@ function isCustomType(obj: any): obj is CustomType {
         typeof obj.name === "string"
     )
 }
+
+
+//0115 repeat
+function qfunc<T>(a:string, ...rest:T[]){
+    console.log(a,rest)
+}
+
+const qfunc2 = (a:number, b:number) =>{
+    return a+b
+}
+qfunc<number>('string', 1, 2, 3)
+
+type A = {
+    a:string,
+    b:number
+}
+
+type B = {
+    c:boolean
+}
+
+const result: A & B = {
+    a: 'string',
+    b: 123,
+    c: true
+}
+
+interface C  {
+    a:string,
+    b:number
+}
+
+interface D extends C  {
+    c:boolean
+}
+
+const result2: D = {
+    a: 'string',
+    b: 123,
+    c: true
+}
+
+type E = string | number
+const tempp: E = 123
+
+function qqu(a:A){
+    if(typeof a  === 'string'){
+        return;
+    }
+    let b = a;
+}
+
+let arg:undefined | string; 
+
+arg = null ?? 'answer' // undefined, null
+arg = 0 || 'answer' // arg가 falsy undefined, null, false, 0, Nan, ""
